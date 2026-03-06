@@ -543,10 +543,21 @@ function setLang(lang) {
   document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
 }
 const canvas=document.getElementById('pieChart'), ctx=canvas.getContext('2d');
-const cx=80,cy=80,r=68;
+const cx=80,cy=80,r=68,ir=38;
 [{v:35,c:'#1A56A0'},{v:28,c:'#00D4FF'},{v:22,c:'#00FF9D'},{v:15,c:'#9B59FF'}].reduce((a,d)=>{
   const s=(d.v/100)*2*Math.PI;
   ctx.beginPath(); ctx.moveTo(cx,cy); ctx.arc(cx,cy,r,a,a+s); ctx.closePath();
   ctx.fillStyle=d.c; ctx.fill(); ctx.strokeStyle='#0D1F38'; ctx.lineWidth=3; ctx.stroke();
   return a+s;
-},
+},-Math.PI/2);
+// donut hole
+ctx.beginPath(); ctx.arc(cx,cy,ir,0,2*Math.PI);
+ctx.fillStyle='#0D1F38'; ctx.fill();
+// center label
+ctx.fillStyle='#E8F4FD'; ctx.font='bold 18px JetBrains Mono,monospace';
+ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillText('BI',cx,cy-6);
+ctx.fillStyle='#6B8CAE'; ctx.font='9px JetBrains Mono,monospace';
+ctx.fillText('SKILLS',cx,cy+8);
+-e </script>
+</body>
+</html>
